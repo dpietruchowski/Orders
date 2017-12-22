@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9E2C1375-40AF-4F1B-8176-8A8F4D4A3501}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Orders</RootNamespace>
+    <AssemblyName>Orders</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="gtk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+      <Package>gtk-sharp-2.0</Package>
+    </Reference>
+    <Reference Include="gdk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+      <Package>gtk-sharp-2.0</Package>
+    </Reference>
+    <Reference Include="glib-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+      <Package>glib-sharp-2.0</Package>
+    </Reference>
+    <Reference Include="glade-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+      <Package>glade-sharp-2.0</Package>
+    </Reference>
+    <Reference Include="pango-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+      <Package>gtk-sharp-2.0</Package>
+    </Reference>
+    <Reference Include="atk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+      <Package>gtk-sharp-2.0</Package>
+    </Reference>
+    <Reference Include="Mono.Posix" />
+    <Reference Include="Npgsql" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="gtk-gui\gui.stetic">
+      <LogicalName>gui.stetic</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="gtk-gui\generated.cs" />
+    <Compile Include="MainWindow.cs" />
+    <Compile Include="gtk-gui\MainWindow.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="gtk-gui\Orders.ProductsWidget.cs" />
+    <Compile Include="gtk-gui\Orders.OrdersWidget.cs" />
+    <Compile Include="Widgets\OrdersWidget.cs" />
+    <Compile Include="Widgets\ProductsWidget.cs" />
+    <Compile Include="gtk-gui\Orders.ProductsDialog.cs" />
+    <Compile Include="Database\Database.cs" />
+    <Compile Include="Backend\OrderMaker.cs" />
+    <Compile Include="Database\Table.cs" />
+    <Compile Include="Database\ProductTable.cs" />
+    <Compile Include="Database\ProductDependencyTable.cs" />
+    <Compile Include="Database\OrderDependencyTable.cs" />
+    <Compile Include="Database\ObjectTable.cs" />
+    <Compile Include="Database\OrderTable.cs" />
+    <Compile Include="Backend\ObjectDependency.cs" />
+    <Compile Include="Backend\ProductMaker.cs" />
+    <Compile Include="View\ProductsDialog.cs" />
+    <Compile Include="Database\CommandBuilder.cs" />
+    <Compile Include="Nodes\ProductNode.cs" />
+    <Compile Include="Nodes\OrderNode.cs" />
+    <Compile Include="Widgets\ProductWidget.cs" />
+    <Compile Include="gtk-gui\Orders.ProductWidget.cs" />
+    <Compile Include="View\OrdersDialog.cs" />
+    <Compile Include="gtk-gui\Orders.OrdersDialog.cs" />
+    <Compile Include="Nodes\ChildProductNode.cs" />
+    <Compile Include="Nodes\ProductInOrderNode.cs" />
+    <Compile Include="Widgets\OrdeWidget.cs" />
+    <Compile Include="gtk-gui\Orders.OrdeWidget.cs" />
+    <Compile Include="Database\DependencyTable.cs" />
+    <Compile Include="Backend\CycleFinder.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Widgets\" />
+    <Folder Include="Database\" />
+    <Folder Include="Backend\" />
+    <Folder Include="View\" />
+    <Folder Include="Nodes\" />
+  </ItemGroup>
+</Project>
